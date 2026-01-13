@@ -17,3 +17,15 @@
 
 #### This work simulates real‑world Linux system administration tasks around storage provisioning, filesystem management, and logical volume expansion.
 
+## 🖥️ Environment:
+
+#### - OS: CentOS 9 Stream (VirtualBox VM)
+
+#### - Disk: /dev/sdb - 20 GB virtual disk (from Part 1)
+
+#### - Tools Used: lsblk, mkfs.ext4, mount, /etc/fstab, pvcreate, vgcreate, vgextend, lvcreate, lvextend, pvs, vgs, lvs
+
+#### - Volume Group: vg_data
+
+#### - Logical Volume: lv_data 
+
