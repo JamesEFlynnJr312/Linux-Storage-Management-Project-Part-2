@@ -29,3 +29,37 @@
 
 #### - Logical Volume: lv_data 
 
+# 🚀 Project Steps
+
+## Verify Existing Partitions
+
+I started from the partition layout created in Part 1. Verifying existing partitions
+
+Using the "lsblk" command
+
+This confirmed:
+- /dev/sdb1, /dev/sdb2, /dev/sdb3 → primary partitions
+- /dev/sdb4 → extended partition
+- /dev/sdb5, /dev/sdb6 → logical partitions inside the extended partition
+
+<img width="617" height="302" alt="Linux Storage Management - Part 2 pic 1" src="https://github.com/user-attachments/assets/bcb3259a-94f5-4da7-8632-9ca0821cfc8a" />
+
+## Format Partitions with ext4, I chose /dev/sdb1 and /dev/sdb2 to act as standard filesystems. 
+
+<img width="693" height="386" alt="Linux Storage Management - Part 2 pic 2" src="https://github.com/user-attachments/assets/154513bc-9942-44ff-9ab1-a96a3915fff6" />
+
+## Create Mount Points for the File System Filesystems
+
+<img width="690" height="277" alt="Linux Storage Management - Part 2 pic 3" src="https://github.com/user-attachments/assets/92859870-2486-4163-bb01-665a77d736f5" />
+
+## Configure Persistent Mounts with /etc/fstab
+Ensure the filesystems mount automatically at boot
+
+<img width="692" height="371" alt="Linux Storage Management - Part 2 pic 4" src="https://github.com/user-attachments/assets/8d47c65f-834d-4650-91e3-b5dc0bbadf09" />
+
+<img width="671" height="777" alt="Linux Storage Management - Part 2 pic 5" src="https://github.com/user-attachments/assets/8262e4d0-dc03-4a30-bd75-2a618b69826c" />
+
+<img width="558" height="103" alt="Linux Storage Management - Part 2 pic 6" src="https://github.com/user-attachments/assets/b466bddb-fc43-4cb8-891f-786b497756bd" />
+
+<img width="920" height="385" alt="Linux Storage Management - Part 2 pic 7" src="https://github.com/user-attachments/assets/d1b10b27-294a-4537-b0bb-e1fae915e061" />
+
