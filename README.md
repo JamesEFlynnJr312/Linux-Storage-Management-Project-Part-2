@@ -114,21 +114,21 @@
 <img width="737" height="823" alt="Linux Storage Management - Part 2 pic 20" src="https://github.com/user-attachments/assets/41e02986-302a-4388-9af1-710231ed9eb5" />
 
 ## 📘 Key Concepts Reinforced
-### - Filesystem creation: Using mkfs.ext4 to format partitions and logical volumes.
-### - Mounting and persistence: Using mount, df -hT, and /etc/fstab to manage and persist filesystems across reboots.
-### - LVM building blocks:
-### - pvcreate → physical volumes
-### - vgcreate / vgextend → volume groups
-### - lvcreate / lvextend → logical volumes
-### - Online growth: Extending logical volumes and resizing filesystems without recreating them.
-### - Separation of concerns: Using partitions as building blocks for both traditional filesystems and flexible LVM storage
+#### - Filesystem creation: Using mkfs.ext4 to format partitions and logical volumes.
+#### - Mounting and persistence: Using mount, df -hT, and /etc/fstab to manage and persist filesystems across reboots.
+#### - LVM building blocks:
+#### - pvcreate → physical volumes
+#### - vgcreate / vgextend → volume groups
+#### - lvcreate / lvextend → logical volumes
+#### - Online growth: Extending logical volumes and resizing filesystems without recreating them.
+#### - Separation of concerns: Using partitions as building blocks for both traditional filesystems and flexible LVM storage
 
 ## 🎯 What I Learned
-### - How to turn raw partitions into usable filesystems with ext4
-### - How to design and configure persistent mount points using /etc/fstab
-### - How to build and extend LVM volume groups and logical volumes
-### - How to safely grow storage capacity without data loss
-### - How these skills map directly to real‑world Linux, DevOps, and infrastructure roles
+#### - How to turn raw partitions into usable filesystems with ext4
+#### - How to design and configure persistent mount points using /etc/fstab
+#### - How to build and extend LVM volume groups and logical volumes
+#### - How to safely grow storage capacity without data loss
+#### - How these skills map directly to real‑world Linux, DevOps, and infrastructure roles
 
 
 
