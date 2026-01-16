@@ -33,11 +33,11 @@
 
 ## Verify Existing Partitions
 
-I started from the partition layout created in Part 1. Verifying existing partitions
+### I started from the partition layout created in Part 1. Verifying existing partitions
 
-Using the "lsblk" command
+### Using the "lsblk" command
 
-This confirmed:
+### This confirmed:
 - /dev/sdb1, /dev/sdb2, /dev/sdb3 → primary partitions
 - /dev/sdb4 → extended partition
 - /dev/sdb5, /dev/sdb6 → logical partitions inside the extended partition
@@ -53,7 +53,7 @@ This confirmed:
 <img width="690" height="277" alt="Linux Storage Management - Part 2 pic 3" src="https://github.com/user-attachments/assets/92859870-2486-4163-bb01-665a77d736f5" />
 
 ## Configure Persistent Mounts with /etc/fstab
-Ensure the filesystems mount automatically at boot
+### Ensure the filesystems mount automatically at boot
 
 <img width="692" height="371" alt="Linux Storage Management - Part 2 pic 4" src="https://github.com/user-attachments/assets/8d47c65f-834d-4650-91e3-b5dc0bbadf09" />
 
@@ -62,4 +62,73 @@ Ensure the filesystems mount automatically at boot
 <img width="558" height="103" alt="Linux Storage Management - Part 2 pic 6" src="https://github.com/user-attachments/assets/b466bddb-fc43-4cb8-891f-786b497756bd" />
 
 <img width="920" height="385" alt="Linux Storage Management - Part 2 pic 7" src="https://github.com/user-attachments/assets/d1b10b27-294a-4537-b0bb-e1fae915e061" />
+
+## LVM Configuration and Expansion
+### Prepare Partitions for LVM
+### I selected /dev/sdb3, /dev/sdb5, and /dev/sdb6 as LVM physical volumes
+
+<img width="692" height="397" alt="Linux Storage Management - Part 2 pic 8" src="https://github.com/user-attachments/assets/8618dedb-7083-4efd-b735-2d3f13f19256" />
+
+<img width="693" height="692" alt="Linux Storage Management - Part 2 pic 9" src="https://github.com/user-attachments/assets/71c7bae9-6b37-4d0f-9e0e-c0f0ab832429" />
+
+## Create the Volume Group (VG)
+### I created a volume group named vg_data using /dev/sdb3:
+
+<img width="692" height="196" alt="Linux Storage Management - Part 2 pic 10" src="https://github.com/user-attachments/assets/9487504c-fe60-4eb2-8404-9de134b0c014" />
+
+### Verification of the Volume Group:
+
+<img width="691" height="751" alt="Linux Storage Management - Part 2 pic 11" src="https://github.com/user-attachments/assets/ef73c877-c016-42e8-aad5-5d73758b9e0b" />
+
+## Extend the Volume Group with vgextend
+### To increase capacity, I added /dev/sdb5 and /dev/sdb6 to vg_data:
+
+<img width="688" height="652" alt="Linux Storage Management - Part 2 pic 12" src="https://github.com/user-attachments/assets/68015bb0-bb1f-44df-aae9-35d24533c47e" />
+
+## Create a Logical Volume (LV)
+### I created a logical volume named lv_data using 2G of space from vg_data:
+
+<img width="691" height="250" alt="Linux Storage Management - Part 2 pic 13" src="https://github.com/user-attachments/assets/1314f00c-2be0-4639-9071-e4dc0e4ef321" />
+
+<img width="690" height="588" alt="Linux Storage Management - Part 2 pic 14" src="https://github.com/user-attachments/assets/48d71afe-9255-4ea5-986d-442009eaa2c0" />
+
+## Format and create a mounting point for Logical Volume lv_data
+### I formatted the LV with ext4:
+
+<img width="693" height="402" alt="Linux Storage Management - Part 2 pic 15" src="https://github.com/user-attachments/assets/30d2031a-ee6d-4ce6-93a8-8e0613de0fb7" />
+
+## Persistent Mount for the Logical Volume
+### I added the LV entry into the /etc/fstab configuration file for a persistent mount:
+
+<img width="690" height="157" alt="Linux Storage Management - Part 2 pic 16" src="https://github.com/user-attachments/assets/d99a382e-02fa-43af-94b9-86abf7993a96" />
+
+<img width="695" height="643" alt="Linux Storage Management - Part 2 pic 17" src="https://github.com/user-attachments/assets/1eda2a5a-e8a5-4a82-a125-a479030851a3" />
+
+<img width="696" height="451" alt="Linux Storage Management - Part 2 pic 18" src="https://github.com/user-attachments/assets/a2bb3678-20a8-43fa-9211-7567846c92c4" />
+
+## Extending the Logical Volume and Filesystem
+### I extended lv_data by 2G:
+
+<img width="692" height="242" alt="Linux Storage Management - Part 2 pic 19" src="https://github.com/user-attachments/assets/fe1a0eb9-0bf4-4704-bf2c-42518013fc5e" />
+
+<img width="737" height="823" alt="Linux Storage Management - Part 2 pic 20" src="https://github.com/user-attachments/assets/41e02986-302a-4388-9af1-710231ed9eb5" />
+
+## 📘 Key Concepts Reinforced
+### - Filesystem creation: Using mkfs.ext4 to format partitions and logical volumes.
+### - Mounting and persistence: Using mount, df -hT, and /etc/fstab to manage and persist filesystems across reboots.
+### - LVM building blocks:
+### - pvcreate → physical volumes
+### - vgcreate / vgextend → volume groups
+### - lvcreate / lvextend → logical volumes
+### - Online growth: Extending logical volumes and resizing filesystems without recreating them.
+### - Separation of concerns: Using partitions as building blocks for both traditional filesystems and flexible LVM storage
+
+## 🎯 What I Learned
+### - How to turn raw partitions into usable filesystems with ext4
+### - How to design and configure persistent mount points using /etc/fstab
+### - How to build and extend LVM volume groups and logical volumes
+### - How to safely grow storage capacity without data loss
+### - How these skills map directly to real‑world Linux, DevOps, and infrastructure roles
+
+
 
